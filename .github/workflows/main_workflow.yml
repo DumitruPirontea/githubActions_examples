@@ -7,14 +7,14 @@ on:
 
 jobs:
 
-  primerjob:
+  build:
     name: linter_execution
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Linter execution
         uses: docker://github/super-linter:v3.0.1
         env:
