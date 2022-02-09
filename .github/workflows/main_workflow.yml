@@ -1,36 +1,40 @@
 name: Main Workflow
 
-on: [push]
+on: 
+  push:
+    branches:
+      - nodejs_jest_job
 
 jobs:
 
-  build:
+  primerjob:
     name: linter_execution
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+      
       - name: Linter execution
-        uses: docker://github/super-linter:v3.0.1
+        uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: nodejs_example
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: /
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
           VALIDATE_JAVASCRIPT_ES: true
-
-  build2:
+          
+  segundojob:
     name: test-execution
-    runs-on: ubuntu-lastest
-
+    runs-on: ubuntu-latest
+    
     steps:
-      - name: Chechout code
+      - name: Checkout code
         uses: actions/checkout@v2
-
+        
       - name: Run jest tests
         run:
           npm install jest
+          npm install
           npm test
 
