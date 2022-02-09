@@ -3,7 +3,8 @@
   "rules": {
     "semi": [2, "always"],
     "quotes": ["error", "double"]
-  }
+  },
+  "scripts": "test"
 }
 
 
