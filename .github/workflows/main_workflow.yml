@@ -6,7 +6,6 @@ on:
       - nodejs_jest_job
 
 jobs:
-
   build:
     name: linter_execution
     runs-on: ubuntu-latest
