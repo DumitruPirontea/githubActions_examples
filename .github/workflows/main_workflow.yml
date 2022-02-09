@@ -35,6 +35,5 @@ jobs:
       - name: Run jest tests
         run:
           npm install jest
-          npm install
           npm test
 
