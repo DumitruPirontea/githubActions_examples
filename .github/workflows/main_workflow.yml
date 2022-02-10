@@ -24,13 +24,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name: Linter execution
-        uses: docker://github/super-linter:latest
+        uses: github/super-linter@v4
         env:
-          DEFAULT_BRANCH: nodejs_example
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: /
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
-          VALIDATE_JAVASCRIPT_ES: false
+          VALIDATE_JAVASCRIPT_ES: true
           
   segundojob:
     name: test-execution
