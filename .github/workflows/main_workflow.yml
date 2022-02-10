@@ -23,14 +23,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
-      - name: Linter execution
-        uses: github/super-linter/slim@v4
-        env:
-          DEFAULT_BRANCH: nodejs_example
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINTER_RULES_PATH: /
-          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
-          VALIDATE_JAVASCRIPT_ES: true
+#      - name: Linter execution
+#         uses: github/super-linter/slim@v4
+#        env:
+#          DEFAULT_BRANCH: nodejs_example
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          LINTER_RULES_PATH: /
+#          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
+#          VALIDATE_JAVASCRIPT_ES: true
           
   segundojob:
     name: test-execution
