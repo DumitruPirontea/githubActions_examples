@@ -46,3 +46,11 @@ jobs:
           npm install
           npm test
 
+ tercerjob:
+    name: environment_test_execution
+    runs-on: ubuntu-latest
+    
+    steps:          
+          DESTINATION_PERSON: "2DAW"
+        with:
+          who-to-greet: ${{ env.DESTINATION_PERSON }}
