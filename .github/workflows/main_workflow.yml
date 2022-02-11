@@ -51,6 +51,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:          
+      - name: adeloyedeji
+        env:
           DESTINATION_PERSON: "2DAW"
         with:
           who-to-greet: ${{ env.DESTINATION_PERSON }}
