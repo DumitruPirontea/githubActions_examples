@@ -45,15 +45,3 @@ jobs:
           npm install jest
           npm install
           npm test
-
-  tercerjob:
-      name: environment_test_execution
-      runs-on: ubuntu-latest
-    
-      steps:          
-        - name: adeloyedeji
-          uses: adeloyedeji/github-actions-hello@v1.0
-          env:
-            DESTINATION_PERSON: "2DAW"
-          with:
-            who-to-greet: ${{ env.DESTINATION_PERSON }}
