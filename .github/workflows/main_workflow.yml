@@ -1,21 +1,27 @@
-name: Main Workflow
+name: repeticion_diaria
 
-on: [push]
-
+on:
+  push:
+    branches: download_and_share_file
+  schedule:
+    - cron: "0 0 * * *"
 jobs:
-  build:
-    name: linter_execution
+  descarga:
+    name: descargar
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Linter execution
-        uses: github/super-linter@v3
-        env:
-          DEFAULT_BRANCH: nodejs_example
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINTER_RULES_PATH: /
-          JAVASCRIPT_ES_CONFIG_FILE: eslintrc.json
-          VALIDATE_JAVASCRIPT_ES: true
+      - uses: suisei-cn/actions-download-file@v1
+        name: Download the file
+        with:
+            url: "https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210127.ods"
+            target: public/
+          
+      - uses: afc163/surge-preview@v1
+        with:
+          surge_token: ${{ secrets.SURGE_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          dist: public
+          teardown: 'true'
+          build: |
+            npm install
+            npm run build
